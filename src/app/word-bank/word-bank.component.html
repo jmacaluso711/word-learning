@@ -1,6 +1,9 @@
 <div class="page">
   <section>
-    <h1>Word Bank</h1>
+    <header>
+      <h1>Word Bank</h1>
+      <button [disabled]="words?.length === 0" (click)="flashCardMode()">Flash Card Mode</button>
+    </header>
     <ng-container *ngIf="!words?.length">
       <p>Add some words to study.</p>
     </ng-container>
@@ -22,9 +25,5 @@
         <button [disabled]="wordForm.invalid">Add</button>
       </fieldset>
     </form>
-  </section>
-
-  <section>
-    <button [disabled]="words?.length === 0" (click)="flashCardMode()">Flash Card Mode</button>
   </section>
 </div>
