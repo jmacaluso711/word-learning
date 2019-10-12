@@ -1,0 +1,30 @@
+<div class="page">
+
+  <section *ngIf="!hideForm">
+    <header>
+      <h1>Select words to study</h1>
+      <button (click)="goToWordBank()">Add More Words</button>
+    </header>
+    <form [formGroup]="wordsForm" (ngSubmit)="submitWordsForm()">
+      <label formArrayName="words" *ngFor="let word of wordsForm.controls.words.controls; let i = index">
+        <input type="checkbox" [formControlName]="i">
+        {{wordsData[i].word}}
+      </label>
+      <button style="margin-top: 3rem">Begin</button>
+    </form>
+  </section>
+
+  <section>
+    <ng-container *ngFor="let studyWord of studyWords; let i = index">
+      <div *ngIf="studyWord.visible">
+        <h2>{{studyWord.word}}</h2>
+        <button (click)="reveal(studyWord, i)">Reveal Definition</button>
+        <p *ngIf="studyWord.showDef">{{studyWord.definition}}</p>
+      </div>
+    </ng-container>
+    <div *ngIf="complete">
+      <h2>{{complete}}</h2>
+      <button (click)="restart()">Try Again</button>
+    </div>
+  </section>
+</div>

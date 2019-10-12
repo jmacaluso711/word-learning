@@ -1,0 +1,30 @@
+<div class="page">
+  <section>
+    <h1>Word Bank</h1>
+    <ng-container *ngIf="!words?.length">
+      <p>Add some words to study.</p>
+    </ng-container>
+    <ng-container *ngIf="words?.length">
+      <div *ngFor="let word of words">
+        <h2>{{word.word}}</h2>
+        <p *ngIf="word.definition">{{word.definition}}</p>
+        <p style="color: red" *ngIf="word.error">{{word.error}}</p>
+      </div>
+    </ng-container>
+    <span *ngIf="loading">Loading...</span>
+  </section>
+
+  <section>
+    <form [formGroup]="wordForm" (ngSubmit)="submitWordForm()">
+      <fieldset>
+        <legend>Add Word</legend>
+        <input type="text" formControlName="word">
+        <button [disabled]="wordForm.invalid">Add</button>
+      </fieldset>
+    </form>
+  </section>
+
+  <section>
+    <button [disabled]="words?.length === 0" (click)="flashCardMode()">Flash Card Mode</button>
+  </section>
+</div>

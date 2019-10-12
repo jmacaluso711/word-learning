@@ -1,0 +1,21 @@
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+}
+
+section {
+  margin: 3rem 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+}
+
+header button {
+  margin-left: 1rem;
+}

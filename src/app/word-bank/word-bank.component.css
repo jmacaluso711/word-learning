@@ -1,0 +1,12 @@
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+section {
+  margin: 3rem 0;
+}
+
+form button {
+  margin: 0 1rem;
+}
